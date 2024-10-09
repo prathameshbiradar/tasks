@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Boxing_Unboxing.cs" />
+    <Compile Include="Convert_class_conversion.cs" />
+    <Compile Include="Eplicit_cast_conversion.cs" />
+    <Compile Include="Parsing_conversion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
