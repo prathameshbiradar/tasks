@@ -100,6 +100,9 @@ namespace Tasks
             }
             return totalEmpHrs * companyEmpWage.empRatePerHour;
         }
-        
+        public int getTotalwage(string company)
+        {
+            return this.companyToEmpWageMap[company].totalEmpWage;
+        }
     }
 }
