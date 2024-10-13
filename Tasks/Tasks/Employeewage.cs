@@ -10,15 +10,19 @@ namespace Tasks
     {
         static void Main(string[] args)
         {
-            int Is_Full_Time = 1;
+            int Is_part_time = 1;
+            int Is_Full_Time = 2;
             int emp_rate_per_hour = 20;
             int empHrs = 0;
             int empWage = 0;
             Random random = new Random();
 
             int empCheck = random.Next(0, 2);
-            if (empCheck == Is_Full_Time) 
+            if (empCheck == Is_part_time)
             {
+                empHrs = 4;
+            }
+            else if (empCheck == Is_Full_Time) {
                 empHrs = 8;
             }
             else
