@@ -13,15 +13,16 @@ namespace Tasks
         public const int Is_full_time = 2;
         public const int emp_rate_per_hour = 20;
         public const int num_of_working_days = 2;
+        public const int max_hrs_in_month = 10;
         static void Main(string[] args)
         {
 
-            int empHrs = 0, empWage = 0, totalEmpWage = 0;
+            int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 
-            for (int day = 0; day < num_of_working_days; day++)
-            {
+            while (totalEmpHrs <= max_hrs_in_month && totalWorkingDays < num_of_working_days)
+            { 
+                totalWorkingDays++;
                 Random random = new Random();
-
                 int empCheck = random.Next(0, 3);
                 switch (empCheck) {
 
@@ -35,10 +36,10 @@ namespace Tasks
                         empHrs = 0;
                         break;
                 }
-                empWage = empHrs * emp_rate_per_hour;
-                totalEmpWage += empWage;
-                Console.WriteLine("Emp Wage : " + empWage);
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Day#:"+ totalWorkingDays+" Emp Hrs : "+empHrs);
             }
+            int totalEmpWage = totalEmpHrs * emp_rate_per_hour;
             Console.WriteLine("Total Emp Wage : " + totalEmpWage);
         }
     }
