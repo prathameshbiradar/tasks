@@ -37,35 +37,39 @@ namespace Tasks
         static void Main(string[] args)
         {
 
-            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
+            EmpWageBuilder empWageBuilder = new EmpWageBuilder();
             empWageBuilder.addCompanyEmpWage("DMart", 20, 2, 10);
-            empWageBuilder.addcompanyEmpWage("Reliance", 10, 4, 20);
+            empWageBuilder.addCompanyEmpWage("Reliance", 10, 4, 20);
             empWageBuilder.computeEmpWage();
         }
     }
-    public class EmpWageBuilderArray
+    public class EmpWageBuilder
     {
         public const int Is_part_time = 1;
         public const int Is_full_time = 2;
 
-        private int numofcompany = 0;
-        private CompanyEmpWage[] companyEmpWageArray;
+        private LinkedList<CompanyEmpWage> companyEmpWageList;
+        private Dictionary<string, CompanyEmpWage> companyToEmpWageMap;
 
-        public EmpWageBuilderArray()
+        public EmpWageBuilder()
         {
-            this.companyEmpWageArray = new CompanyEmpWage[5];
+            this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
+            this.companyToEmpWageMap = new Dictionary<string, CompanyEmpWage>();
         }
         public void addCompanyEmpWage(String company, int empRatePerHour, int numofworkingDays, int maxHoursPerMonth)
         {
-            companyEmpWageArray[this.numofcompany] = new CompanyEmpWage(company, empRatePerHour, numofworkingDays, maxHoursPerMonth);
-            numofcompany++;
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numofworkingDays, maxHoursPerMonth);
+            this.companyEmpWageList.AddLast(companyEmpWage);
+            this.companyToEmpWageMap.Add(company, companyEmpWage);
+
         }
         public void computeEmpWage()
         {
-            for (int i = 0; i < numofcompany; i++)
+            foreach (CompanyEmpWage companyEmpWage in this.companyEmpWageList) 
             {
-                companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(this.companyEmpWageArray[i]));
-                Console.WriteLine(this.companyEmpWageArray[i].toString());
+
+                companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
+                Console.WriteLine(companyEmpWage.toString());
             }
         }
 
@@ -96,5 +100,6 @@ namespace Tasks
             }
             return totalEmpHrs * companyEmpWage.empRatePerHour;
         }
+        
     }
 }
