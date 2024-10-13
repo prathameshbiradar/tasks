@@ -6,21 +6,27 @@ using System.Threading.Tasks;
 
 namespace Tasks
 {
+    public class Employeewage
     {
         static void Main(string[] args)
         {
             int Is_Full_Time = 1;
+            int emp_rate_per_hour = 20;
+            int empHrs = 0;
+            int empWage = 0;
             Random random = new Random();
 
             int empCheck = random.Next(0, 2);
             if (empCheck == Is_Full_Time) 
             {
-                Console.WriteLine("Employee is Present");
+                empHrs = 8;
             }
             else
             {
-                Console.WriteLine("Employee is present");
+                empHrs = 0;
             }
+            empWage = empHrs * emp_rate_per_hour;
+            Console.WriteLine("Emp Wage : "+empWage);
         }
     }
 }
