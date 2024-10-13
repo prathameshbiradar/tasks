@@ -11,45 +11,40 @@ namespace Tasks
     {
         public const int Is_part_time = 1;
         public const int Is_full_time = 2;
-        public const int emp_rate_per_hour = 20;
-        public const int num_of_working_days = 2;
-        public const int max_hrs_in_month = 10;
-
-        public static int computeEmpWage()
+        public static int computeEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
 
             int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
-
-            while (totalEmpHrs <= max_hrs_in_month && totalWorkingDays < num_of_working_days)
+            while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays)
             {
 
                 totalWorkingDays++;
                 Random random = new Random();
-                int empCheck = random.Next(0,3);
+                int empCheck = random.Next(0, 3);
                 switch (empCheck)
-                { 
-                    case Is_part_time :
+                {
+                    case Is_part_time:
                         empHrs = 4;
                         break;
-                    case Is_full_time :
+                    case Is_full_time:
                         empHrs = 8;
                         break;
                     default:
-                        empHrs = 0; 
+                        empHrs = 0;
                         break;
-                }
+              }
                 totalEmpHrs += empHrs;
-                Console.WriteLine("Day#:" + totalWorkingDays + " Emp Hrs : " + empHrs);
+                Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hrs : " + empHrs);
             }
-            int totalEmpWage = totalEmpHrs * emp_rate_per_hour;
-            Console.WriteLine("Total Emp Wage : " + totalEmpWage);
+            int totalEmpWage = totalEmpHrs * empRatePerHour;
+            Console.WriteLine("Total Emp Wage for company : " + company + " is:" + totalEmpWage);
             return totalEmpWage;
         }
-
         static void Main(string[] args)
         {
 
-           computeEmpWage();
+           computeEmpWage("DMart", 20,2,10);
+            computeEmpWage("Reliance", 10, 4, 20);
         }
     }
 }
