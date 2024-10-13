@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace Tasks
 {
+    public interface IComputeEmpWage
+    {
+         void addCompanyEmpWage(string company, int empRatePerHour, int numofworkingDays, int maxHoursPerMonth);
+         void computeEmpWage();
+        int getTotalwage(string company);
+    }
     public class CompanyEmpWage 
     {
 
@@ -43,7 +49,7 @@ namespace Tasks
             empWageBuilder.computeEmpWage();
         }
     }
-    public class EmpWageBuilder
+    public class EmpWageBuilder : IComputeEmpWage
     {
         public const int Is_part_time = 1;
         public const int Is_full_time = 2;
